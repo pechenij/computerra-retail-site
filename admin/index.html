@@ -1,0 +1,101 @@
+
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Адмінка — КОМПУТЕРРА</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <div class="container admin-login" data-login>
+      <div class="panel-card" style="max-width:480px;margin:0 auto">
+        <div class="brand" style="margin-bottom:22px">
+          <img src="../assets/logo.png" alt="КОМПУТЕРРА">
+          <div class="brand-copy">
+            <span class="kicker">Окремий вхід</span>
+            <span class="page-title">Адмінка роздрібного сайту</span>
+          </div>
+        </div>
+        <form name="loginForm" class="form-stack">
+          <label><span>Логін</span><input type="text" name="login" required></label>
+          <label><span>Пароль</span><input type="password" name="password" required></label>
+          <button class="btn primary" type="submit">Увійти</button>
+        </form>
+        <p class="note" style="margin-top:14px">У цій стартовій версії вхід запитується щоразу при відкритті адмінки. На наступному етапі я підключу захищений backend і спільну базу.</p>
+      </div>
+    </div>
+
+    <div class="container admin-panel hidden" data-panel>
+      <div class="panel-card" style="margin-bottom:18px">
+        <div class="brand">
+          <img src="../assets/logo.png" alt="КОМПУТЕРРА">
+          <div class="brand-copy">
+            <span class="kicker">Панель керування</span>
+            <span class="page-title">Адмінка роздрібного сайту</span>
+          </div>
+        </div>
+
+<div class="sync-box" style="margin-top:18px">
+  <span class="kicker">Supabase</span>
+  <h3 style="margin:8px 0 8px">Синхронізація цін і наявності</h3>
+  <p class="note" style="margin:0 0 12px">На цьому кроці роздрібний сайт читає товари прямо з Supabase. Ціни та наявність змінюй у Table Editor Supabase. Адмінку для редагування через базу підключу на наступному етапі.</p>
+  <label><span>CSV URL Supabase</span><input type="text" data-sheet-url placeholder="https://script.google.com/macros/s/.../exec"></label>
+  <div class="admin-actions">
+    <button class="btn" type="button" data-save-sheet-url>Зберегти URL локально</button>
+    <button class="btn primary" type="button" data-sync-now>Синхронізувати зараз</button>
+    <button class="btn" type="button" data-clear-sheet-url>Скинути локальний URL</button>
+  </div>
+  <p class="note" data-sync-feedback style="margin:10px 0 0">Зараз використовується URL із конфігу проекту. Тут можна тимчасово підставити інший Apps Script URL лише для цього браузера.</p>
+</div>
+
+      </div>
+
+      <div class="admin-grid">
+        <div class="panel-card" id="product-editor">
+          <span class="kicker">Товар</span>
+          <h2 data-form-title style="margin:8px 0 8px">Додати товар</h2>
+          <p class="note" style="margin:0 0 18px">Щоб змінити існуючий товар, натисни кнопку «Редагувати» у списку праворуч.</p>
+          <form name="productForm" class="form-stack">
+            <label><span>Назва</span><input type="text" name="name" required></label>
+            <label><span>Модель</span><input type="text" name="model" required></label>
+            <label><span>Бренд</span><input type="text" name="brand" required></label>
+            <label><span>Категорія</span>
+              <select name="category">
+                <option>однофазні інвертори</option>
+                <option>трифазні інвертори</option>
+                <option>акумулятори</option>
+                <option>фотоелектричні панелі</option>
+              </select>
+            </label>
+            <label><span>Характеристики</span><input type="text" name="specs"></label>
+            <div class="sync-box" style="padding:12px 14px;margin:0 0 10px"><p class="note" style="margin:0">Ціна, статус наявності та дата прибуття керуються Google Таблицею. У цій адмінці їх можна лише переглядати після синхронізації.</p></div>
+            <label><span>Гарантія</span><input type="text" name="warranty"></label>
+            <label><span>Опис</span><textarea name="description"></textarea></label>
+            <label><span>Фото (URL або шлях)</span><input type="text" name="image" placeholder="../assets/placeholder-inverter.svg"></label>
+            <label><span>PDF-інструкція (URL або шлях)</span><input type="text" name="pdf" placeholder="#"></label>
+            <div class="admin-actions">
+              <button class="btn primary" type="submit">Зберегти</button>
+              <button class="btn" type="button" data-reset-form>Очистити</button>
+            </div>
+          </form>
+        </div>
+
+        <div>
+                    <div class="panel-card">
+            <span class="kicker">Товари</span>
+            <h2 style="margin:8px 0 14px">Список позицій</h2>
+            <div class="category-strip admin-category-strip" data-admin-categories></div>
+            <div class="admin-list" data-product-list></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../assets/default-data.js"></script>
+  <script src="../assets/supabase-config.js"></script>
+  <script src="../assets/supabase-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

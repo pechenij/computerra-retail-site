@@ -1,0 +1,105 @@
+
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КОМПУТЕРРА — Каталог-прайс</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" alt="КОМПУТЕРРА">
+          <div class="brand-copy">
+            <span class="kicker">КОМПУТЕРРА</span>
+            <span class="page-title">Каталог-прайс</span>
+          </div>
+        </a>
+        <button class="burger-btn" type="button" data-menu-toggle aria-label="Відкрити меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-menu" data-mobile-menu>
+      <div class="mobile-menu-panel">
+        <a class="mobile-menu-link" href="index.html">Каталог товарів</a>
+      </div>
+    </div>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-card">
+            <span class="kicker">Системи резервного живлення та СЕС</span>
+            <h1>Каталог обладнання для дому та бізнесу.</h1>
+            <p>Інвертори, акумулятори та сонячні панелі з актуальними роздрібними цінами, гарантією та статусом наявності.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <div class="container">
+          <div class="search-box">
+            <input data-search type="search" placeholder="Пошук за назвою, брендом або моделлю">
+          </div>
+        </div>
+      </section>
+
+      <section class="categories-wrap">
+        <div class="container">
+          <div class="category-strip" data-categories></div>
+        </div>
+      </section>
+
+      <section class="catalog">
+        <div class="container">
+          <div class="meta-row">
+            <h2>Каталог товарів</h2>
+            <div class="meta-muted" data-count></div>
+          </div>
+          <p class="sync-note" data-sync-note></p>
+
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Категорія</th>
+                <th>Назва та модель</th>
+                <th>Характеристики</th>
+                <th>Ціна, грн</th>
+                <th>Гарантія</th>
+                <th>Наявність</th>
+              </tr>
+            </thead>
+            <tbody data-catalog-body></tbody>
+          </table>
+
+          <div class="mobile-list" data-mobile-list></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-card">
+          <div class="footer-left">
+            <img src="assets/logo.png" alt="КОМПУТЕРРА">
+            <div class="footer-copy">
+              <div class="page-title">КОМПУТЕРРА</div>
+              <small data-address>м. Світловодськ, вул. Городоцька, 13</small>
+            </div>
+          </div>
+          <a class="cta-phone" data-phone-href href="tel:+380960446446">Подзвонити: <span data-phone-display style="margin-left:8px">096 044 64 46</span></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/default-data.js"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script src="assets/supabase-data.js"></script>
+  <script src="assets/main.js"></script>
+</body>
+</html>

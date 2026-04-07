@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Товар — КОМПУТЕРРА</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="КОМПУТЕРРА">
+        <div class="brand-copy">
+          <span class="kicker">КОМПУТЕРРА</span>
+          <span class="page-title">Каталог-прайс</span>
+        </div>
+      </a>
+      <button class="burger-btn" type="button" data-menu-toggle aria-label="Відкрити меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu" data-mobile-menu>
+    <div class="mobile-menu-panel">
+      <a class="mobile-menu-link" href="index.html">Каталог товарів</a>
+    </div>
+  </div>
+  <main class="product-hero">
+    <div class="container" data-product-root>
+      <a class="back-link" href="index.html">← Назад до каталогу</a>
+      <div class="product-layout">
+        <div class="product-visual">
+          <div class="product-image-frame">
+            <img data-product-image src="assets/placeholder-inverter.svg" alt="">
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="kicker">Сторінка товару</span>
+          <h1 data-product-name></h1>
+          <div class="product-model" data-product-model></div>
+          <div class="product-copy" data-product-copy></div>
+
+          <div class="spec-list">
+            <div class="spec-box"><div class="item-key">Категорія</div><div data-product-category></div></div>
+            <div class="spec-box"><div class="item-key">Характеристики</div><div data-product-specs></div></div>
+            <div class="spec-box"><div class="item-key">Гарантія</div><div data-product-warranty></div></div>
+            <div class="spec-box"><div class="item-key">Наявність</div><div><span class="badge" data-product-status></span></div></div>
+            <div class="spec-box price-box"><div class="item-key">Роздрібна ціна</div><div class="price" data-product-price></div></div>
+          </div>
+
+          <div class="product-actions">
+            <a class="btn primary" data-phone-href href="tel:+380960446446">Подзвонити для замовлення</a>
+            <a class="btn" data-product-pdf href="#" target="_blank" rel="noopener">Переглянути PDF-інструкцію</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card">
+        <div class="footer-left">
+          <img src="assets/logo.png" alt="КОМПУТЕРРА">
+          <div>
+            <div class="page-title">КОМПУТЕРРА</div>
+            <small data-address>м. Світловодськ, вул. Городоцька, 13</small>
+          </div>
+        </div>
+        <a class="cta-phone" data-phone-href href="tel:+380960446446">Подзвонити: <span data-phone-display style="margin-left:8px">096 044 64 46</span></a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/default-data.js"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script src="assets/supabase-data.js"></script>
+  <script src="assets/product.js"></script>
+</body>
+</html>
