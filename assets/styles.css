@@ -471,3 +471,56 @@ body.admin-page .admin-category-strip .category-pill {
   .dealer-matrix-col-head,.dealer-matrix-cell{min-width:118px}
   .dealer-matrix-cell input{min-height:36px;padding:7px 8px}
 }
+
+
+/* v32 compact dealer cards */
+[data-dealer-list].admin-list{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+[data-dealer-list] .admin-item{
+  grid-template-columns:minmax(0,1fr) 170px;
+  gap:10px;
+  padding:14px 16px;
+  align-items:start;
+  border-radius:20px;
+}
+[data-dealer-list] .admin-item-main h3{
+  font-size:16px;
+  margin:0 0 6px;
+  line-height:1.2;
+}
+[data-dealer-list] .admin-item-main p{
+  font-size:13px;
+  line-height:1.4;
+}
+[data-dealer-list] .admin-actions--inline{
+  gap:8px;
+  width:170px;
+}
+[data-dealer-list] .admin-actions--inline .btn{
+  width:100%;
+  min-height:40px;
+  padding:0 12px;
+  font-size:14px;
+}
+@media (max-width: 1280px){
+  [data-dealer-list].admin-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width: 760px){
+  [data-dealer-list].admin-list{grid-template-columns:1fr;}
+  [data-dealer-list] .admin-item{
+    grid-template-columns:1fr;
+    padding:12px;
+    gap:10px;
+  }
+  [data-dealer-list] .admin-actions--inline{
+    width:100%;
+    grid-template-columns:1fr 1fr 1fr;
+  }
+  [data-dealer-list] .admin-actions--inline .btn{
+    min-height:40px;
+    font-size:13px;
+    padding:0 8px;
+  }
+}
