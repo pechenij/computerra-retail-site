@@ -4,9 +4,9 @@ param(
 
   [string]$AppUrl = "https://pechenij.github.io/computerra-retail-site/",
 
-  [string]$ButtonText = "Каталог-прайс",
+  [string]$ButtonText = ([regex]::Unescape("\u041a\u0430\u0442\u0430\u043b\u043e\u0433-\u043f\u0440\u0430\u0439\u0441")),
 
-  [string]$Description = "Каталог-прайс КОМПУТЕРРА: актуальные цены, наличие и страницы товаров."
+  [string]$Description = ([regex]::Unescape("\u041a\u0430\u0442\u0430\u043b\u043e\u0433-\u043f\u0440\u0430\u0439\u0441 \u041a\u041e\u041c\u041f\u0423\u0422\u0415\u0420\u0420\u0410: \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0435 \u0446\u0435\u043d\u044b, \u043d\u0430\u043b\u0438\u0447\u0438\u0435 \u0438 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u0442\u043e\u0432\u0430\u0440\u043e\u0432."))
 )
 
 $ErrorActionPreference = "Stop"
@@ -21,11 +21,14 @@ function Invoke-TelegramMethod {
     [hashtable]$Body
   )
 
+  $json = $Body | ConvertTo-Json -Depth 12
+  $bytes = [System.Text.Encoding]::UTF8.GetBytes($json)
+
   $response = Invoke-RestMethod `
     -Uri "$apiBase/$Method" `
     -Method Post `
     -ContentType "application/json; charset=utf-8" `
-    -Body ($Body | ConvertTo-Json -Depth 12)
+    -Body $bytes
 
   if (-not $response.ok) {
     throw "Telegram API returned ok=false for $Method"
@@ -33,6 +36,10 @@ function Invoke-TelegramMethod {
 
   return $response.result
 }
+
+$catalogText = [regex]::Unescape("\u041a\u0430\u0442\u0430\u043b\u043e\u0433-\u043f\u0440\u0430\u0439\u0441")
+$shortDescription = [regex]::Unescape("\u041a\u0430\u0442\u0430\u043b\u043e\u0433-\u043f\u0440\u0430\u0439\u0441 \u041a\u041e\u041c\u041f\u0423\u0422\u0415\u0420\u0420\u0410")
+$openCatalog = [regex]::Unescape("\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043a\u0430\u0442\u0430\u043b\u043e\u0433")
 
 $me = Invoke-TelegramMethod -Method "getMe" -Body @{}
 Write-Host "Bot: @$($me.username)"
@@ -42,18 +49,18 @@ Invoke-TelegramMethod -Method "setMyDescription" -Body @{
 } | Out-Null
 
 Invoke-TelegramMethod -Method "setMyShortDescription" -Body @{
-  short_description = "Каталог-прайс КОМПУТЕРРА"
+  short_description = $shortDescription
 } | Out-Null
 
 Invoke-TelegramMethod -Method "setMyCommands" -Body @{
   commands = @(
     @{
       command = "start"
-      description = "Открыть каталог"
+      description = $openCatalog
     },
     @{
       command = "catalog"
-      description = "Каталог-прайс"
+      description = $catalogText
     }
   )
 } | Out-Null
