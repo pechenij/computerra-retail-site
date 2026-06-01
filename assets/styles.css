@@ -421,8 +421,25 @@ body.telegram-webapp .categories-wrap{
   background:var(--tg-bg-color,var(--bg));
 }
 body.telegram-webapp .header-login-btn,
-body.telegram-webapp .mobile-menu-link[href="dealer-login.html"]{
+body.telegram-webapp .burger-btn,
+body.telegram-webapp .mobile-menu,
+body.telegram-webapp .mobile-menu-link[href="dealer-login.html"],
+body.telegram-webapp [data-product-pdf]{
   display:none;
+}
+body.telegram-webapp .telegram-call-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:0 16px;
+  border-radius:999px;
+  background:var(--tg-button-color,var(--accent));
+  border:1px solid var(--tg-button-color,var(--accent));
+  color:var(--tg-button-text-color,#151515);
+  font-weight:800;
+  white-space:nowrap;
+  box-shadow:0 10px 24px rgba(15,23,42,.08);
 }
 body.telegram-webapp .cta-phone,
 body.telegram-webapp .btn.primary,
@@ -447,11 +464,13 @@ body.telegram-webapp .mobile-menu-panel{top:calc(12px + env(safe-area-inset-top)
 @media (max-width:760px){
   body.telegram-webapp .hero{padding-top:8px}
   body.telegram-webapp .site-header .inner{min-height:56px}
+  body.telegram-webapp .telegram-call-btn{min-height:40px;padding:0 12px;font-size:14px}
 }
 
 
 /* v27 dealer portal */
 .header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.telegram-call-btn{display:none}
 .header-login-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 18px;
   border-radius:999px;border:1px solid rgba(15,23,42,.09);
