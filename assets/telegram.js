@@ -13,6 +13,45 @@
 
   document.body.classList.add('telegram-webapp');
 
+  function openPhoneLink(href) {
+    if (!href || !href.startsWith('tel:')) return;
+
+    try {
+      tg?.HapticFeedback?.impactOccurred?.('light');
+    } catch (error) {
+      // Haptics are optional and depend on the Telegram client.
+    }
+
+    try {
+      const frame = document.createElement('iframe');
+      frame.style.display = 'none';
+      frame.src = href;
+      document.body.appendChild(frame);
+      setTimeout(function () {
+        frame.remove();
+      }, 1200);
+    } catch (error) {
+      // Some WebViews block tel: iframes; fall through to direct navigation.
+    }
+
+    try {
+      window.open(href, '_blank', 'noopener');
+    } catch (error) {
+      // Direct navigation below is the final fallback.
+    }
+
+    window.location.href = href;
+  }
+
+  document.addEventListener('click', function (event) {
+    const phoneLink = event.target.closest('a[href^="tel:"]');
+    if (!phoneLink) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    openPhoneLink(phoneLink.getAttribute('href'));
+  }, true);
+
   document.addEventListener('click', function (event) {
     const link = event.target.closest('a[href]');
     if (!link) return;
