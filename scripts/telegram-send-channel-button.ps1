@@ -25,7 +25,7 @@ $body = @{
   text = $Message
   reply_markup = @{
     inline_keyboard = @(
-      @(
+      ,@(
         @{
           text = $ButtonText
           url = $appLink
