@@ -396,6 +396,59 @@ body.admin-page .admin-category-strip .category-pill {
   .sync-note{font-size:13px;margin-bottom:10px}
 }
 
+/* Telegram Mini App */
+body.telegram-webapp{
+  background:var(--tg-bg-color,var(--bg));
+  color:var(--tg-text-color,var(--text));
+  padding-bottom:calc(18px + env(safe-area-inset-bottom));
+}
+body.telegram-webapp .site-shell{padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+body.telegram-webapp .site-header{
+  background:var(--tg-secondary-bg-color,var(--panel));
+  border-bottom-color:rgba(210,210,215,.48);
+}
+body.telegram-webapp .hero-card,
+body.telegram-webapp .search-box,
+body.telegram-webapp .catalog-table,
+body.telegram-webapp .item-card,
+body.telegram-webapp .product-visual,
+body.telegram-webapp .product-info,
+body.telegram-webapp .footer-card{
+  background:var(--tg-secondary-bg-color,var(--panel));
+}
+body.telegram-webapp .categories-wrap{
+  top:0;
+  background:var(--tg-bg-color,var(--bg));
+}
+body.telegram-webapp .header-login-btn,
+body.telegram-webapp .mobile-menu-link[href="dealer-login.html"]{
+  display:none;
+}
+body.telegram-webapp .cta-phone,
+body.telegram-webapp .btn.primary,
+body.telegram-webapp .category-pill.active{
+  background:var(--tg-button-color,var(--accent));
+  border-color:var(--tg-button-color,var(--accent));
+  color:var(--tg-button-text-color,#151515);
+}
+body.telegram-webapp .kicker,
+body.telegram-webapp .hero p,
+body.telegram-webapp .meta-muted,
+body.telegram-webapp .sync-note,
+body.telegram-webapp .item-key,
+body.telegram-webapp .product-model,
+body.telegram-webapp .product-copy,
+body.telegram-webapp .footer small,
+body.telegram-webapp .back-link{
+  color:var(--tg-hint-color,var(--muted));
+}
+body.telegram-webapp .footer{display:none}
+body.telegram-webapp .mobile-menu-panel{top:calc(12px + env(safe-area-inset-top))}
+@media (max-width:760px){
+  body.telegram-webapp .hero{padding-top:8px}
+  body.telegram-webapp .site-header .inner{min-height:56px}
+}
+
 
 /* v27 dealer portal */
 .header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
