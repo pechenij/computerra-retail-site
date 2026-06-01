@@ -2,7 +2,7 @@ param(
   [Parameter(Mandatory = $true)]
   [string]$Token,
 
-  [string]$AppUrl = "https://pechenij.github.io/computerra-retail-site/?telegram=1",
+  [string]$AppUrl = "https://pechenij.github.io/computerra-retail-site/?telegram=1&appv=20260601-phone1",
 
   [string]$ButtonText = ([regex]::Unescape("\u041a\u0430\u0442\u0430\u043b\u043e\u0433-\u043f\u0440\u0430\u0439\u0441")),
 
