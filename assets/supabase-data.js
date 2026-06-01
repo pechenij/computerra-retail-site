@@ -39,10 +39,12 @@
 
     try {
       const res = await fetch(endpoint.toString(), {
+        cache: 'no-store',
         headers: {
           apikey: cfg.anonKey,
           Authorization: 'Bearer ' + cfg.anonKey,
-          Accept: 'application/json'
+          Accept: 'application/json',
+          'Cache-Control': 'no-cache'
         }
       });
       if (!res.ok) {
@@ -81,10 +83,12 @@
     endpoint.searchParams.set('limit', '1');
     try {
       const res = await fetch(endpoint.toString(), {
+        cache: 'no-store',
         headers: {
           apikey: cfg.anonKey,
           Authorization: 'Bearer ' + cfg.anonKey,
-          Accept: 'application/json'
+          Accept: 'application/json',
+          'Cache-Control': 'no-cache'
         }
       });
       if (!res.ok) return null;

@@ -1,15 +1,28 @@
 (function () {
+  const params = new URLSearchParams(location.search);
+  const forcedTelegramMode = params.get('telegram') === '1';
   const tg = window.Telegram && window.Telegram.WebApp;
-  if (!tg) return;
 
   const isTelegram = Boolean(
-    tg.initData ||
-    tg.initDataUnsafe?.user ||
-    (tg.platform && tg.platform !== 'unknown')
+    forcedTelegramMode ||
+    tg?.initData ||
+    tg?.initDataUnsafe?.user ||
+    (tg?.platform && tg.platform !== 'unknown')
   );
   if (!isTelegram) return;
 
   document.body.classList.add('telegram-webapp');
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const url = new URL(link.getAttribute('href'), location.href);
+    if (url.origin !== location.origin) return;
+    url.searchParams.set('telegram', '1');
+    link.href = url.pathname.split('/').pop() + url.search + url.hash;
+  }, true);
+
+  if (!tg) return;
 
   const theme = tg.themeParams || {};
   const root = document.documentElement;
