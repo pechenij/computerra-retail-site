@@ -18,7 +18,7 @@ param(
 $ErrorActionPreference = "Stop"
 $apiBase = "https://api.telegram.org/bot$Token"
 $cleanBotUsername = $BotUsername.TrimStart("@")
-$appLink = "https://t.me/$cleanBotUsername?startapp=$StartParam"
+$appLink = "https://t.me/${cleanBotUsername}?startapp=$StartParam"
 
 $body = @{
   chat_id = $Channel
