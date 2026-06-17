@@ -41,20 +41,22 @@ alter table public.dealers enable row level security;
 alter table public.dealer_prices enable row level security;
 
 drop policy if exists "authenticated can manage dealers" on public.dealers;
-create policy "authenticated can manage dealers"
+drop policy if exists "admin can manage dealers" on public.dealers;
+create policy "admin can manage dealers"
 on public.dealers
 for all
 to authenticated
-using (true)
-with check (true);
+using ((auth.jwt() ->> 'email') = 'compadmin@komputerra.local')
+with check ((auth.jwt() ->> 'email') = 'compadmin@komputerra.local');
 
 drop policy if exists "authenticated can manage dealer prices" on public.dealer_prices;
-create policy "authenticated can manage dealer prices"
+drop policy if exists "admin can manage dealer prices" on public.dealer_prices;
+create policy "admin can manage dealer prices"
 on public.dealer_prices
 for all
 to authenticated
-using (true)
-with check (true);
+using ((auth.jwt() ->> 'email') = 'compadmin@komputerra.local')
+with check ((auth.jwt() ->> 'email') = 'compadmin@komputerra.local');
 
 create or replace function public.dealer_login(p_login text, p_password text)
 returns jsonb
